@@ -72,20 +72,22 @@ public class StudentRepository
     {
         if (teacherStudentDb.containsKey(teacher) && teacherDb.containsKey(teacher))
         {
-            teacherDb.remove(teacher);
+            for (String sname: teacherStudentDb.get(teacher))  studentDb.remove(sname);
             teacherStudentDb.remove(teacher);
         }
-        if (studentTeacherJoin.containsKey(teacher)) studentTeacherJoin.remove(teacher);
     }
 
     public void deleteAllTeachers()
     {
-        for(String teacher : teacherDb.keySet())
+        for(String tname : teacherDb.keySet())
         {
-            if (teacherStudentDb.containsKey(teacher)) teacherStudentDb.remove(teacher);
-            if (studentTeacherJoin.containsKey(teacher)) studentTeacherJoin.remove(teacher);
+            if (teacherStudentDb.containsKey(tname))
+            {
+                for (String sname: teacherStudentDb.get(tname))  studentDb.remove(sname);
+                teacherStudentDb.remove(tname);
+            }
 
-            teacherDb.remove(teacher);
+            else  teacherDb.remove(tname);
         }
     }
 }
