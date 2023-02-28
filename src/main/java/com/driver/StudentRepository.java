@@ -13,7 +13,7 @@ public class StudentRepository
     HashMap<String, Teacher> teacherDb = new HashMap<>();
 
     HashMap<String, List<String>> teacherStudentDb = new HashMap<>();
-    HashMap<String, String > studentTeacherJoin = new HashMap<>();
+   // HashMap<String, String > studentTeacherJoin = new HashMap<>();
 
 
     public void addStudent (Student student) {studentDb.put(student.getName(), student); }
@@ -33,8 +33,6 @@ public class StudentRepository
             studentCombination.add(studentName);
 
             teacherStudentDb.put(teacherName,studentCombination);
-
-            studentTeacherJoin.put(studentName, teacherName);
 
             //For particular Teacher, how many student he is teaching
             Teacher t = teacherDb.get(teacherName);
